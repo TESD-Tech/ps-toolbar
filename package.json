@@ -1,0 +1,24 @@
+{
+  "name": "ps-toolbar",
+  "private": true,
+  "version": "24.12.58",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@iconify/svelte": "^4.1.0",
+    "@sveltejs/vite-plugin-svelte": "^5.0.1",
+    "@tesd-tech/ps-package": "^24.11.9",
+    "svelte": "^5.10.0",
+    "vite": "^6.0.3"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "md5": "^2.3.0",
+    "postcss-cli": "^11.0.0",
+    "xlsx": "^0.18.5"
+  }
+}
