@@ -1,0 +1,16 @@
+[
+  {
+    "id": "messages",
+    "icon": "/icons/message.svg",
+    "href": "https://powerschool.example.com/messages",
+    "title": "Messages",
+    "count": 3
+  },
+  {
+    "id": "alerts",
+    "icon": "/icons/alert.svg",
+    "href": "https://powerschool.example.com/alerts",
+    "title": "Alerts",
+    "count": 1
+  }
+]
