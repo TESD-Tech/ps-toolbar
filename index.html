@@ -1,12 +1,49 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PS Toolbar</title>
+    <title>PS Toolbar Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #f3f4f6;
+      }
+      header {
+        background: #111827;
+        color: white;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+      }
+      .logo { font-weight: bold; }
+      main { padding: 2rem; max-width: 800px; margin: 0 auto; }
+      code { background: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <header>
+      <div class="logo">PowerSchool Simulation</div>
+      <ps-toolbar></ps-toolbar>
+    </header>
+    
+    <main>
+      <h1>PS Toolbar Web Component</h1>
+      <p>This toolbar is a Svelte 5 Custom Element (Web Component).</p>
+      <p>It fetches notifications from <code>/notifications.json</code> and renders them as icons with badges.</p>
+      
+      <div style="margin-top: 2rem; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        <h3>Configuration</h3>
+        <ul>
+          <li><strong>feedUrl</strong>: URL to the JSON feed. Defaults to <code>/notifications.json</code>.</li>
+          <li><strong>pollInterval</strong>: Milliseconds between polls. Defaults to <code>30000</code>.</li>
+        </ul>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

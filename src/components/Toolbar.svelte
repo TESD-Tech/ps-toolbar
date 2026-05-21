@@ -1,34 +1,85 @@
-<script>
+<script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  export let feedUrl = '/notifications.json';
-  export let pollInterval = 30000; // ms
+  import { injectShadowCss } from '$lib/injectShadowCss';
 
-  let items = [];
-  let timer;
+  interface ToolbarItem {
+    id: string | number;
+    icon: string;
+    href: string;
+    title: string;
+    count: number;
+  }
+
+  interface Props {
+    feedUrl?: string;
+    pollInterval?: number;
+    portal?: 'admin' | 'teachers' | 'guardian' | 'unknown';
+    // Component reference for ShadowRoot access
+    el?: HTMLElement;
+  }
+
+  let { 
+    feedUrl, 
+    pollInterval = 30000,
+    portal = 'unknown',
+    el
+  } = $props<Props>();
+
+  // Determine the correct feed URL based on the portal if not explicitly provided
+  const resolvedFeedUrl = $derived(() => {
+    if (feedUrl) return feedUrl;
+    
+    // In PowerSchool, we load the .json.txt which is processed for tlist_sql
+    if (portal !== 'unknown') {
+      return `/${portal}/ps-toolbar/notifications.json.txt`;
+    }
+    
+    // Fallback for local dev
+    return 'ps-toolbar/notifications.json';
+  });
+
+  let items = $state<ToolbarItem[]>([]);
+  let timer: ReturnType<typeof setInterval>;
 
   async function fetchFeed() {
+    const url = resolvedFeedUrl();
     try {
-      const res = await fetch(feedUrl, { cache: 'no-store' });
+      const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       if (Array.isArray(data)) {
-        items = data.map((it, idx) => ({
-          id: it.id ?? it.title ?? idx,
-          icon: it.icon ?? '',
-          href: it.href ?? '#',
-          title: it.title ?? '',
-          count: Number(it.count) || 0
-        }));
+        const baseUrl = import.meta.env.BASE_URL;
+        items = data.map((it, idx) => {
+          let icon = it.icon ?? '';
+          if (icon.startsWith('/') && !icon.startsWith(baseUrl)) {
+            icon = `${baseUrl.replace(/\/$/, '')}${icon}`;
+          }
+          return {
+            id: it.id ?? it.title ?? idx,
+            icon,
+            href: it.href ?? '#',
+            title: it.title ?? '',
+            count: Number(it.count) || 0
+          };
+        });
       } else {
         items = [];
       }
     } catch (e) {
-      console.error('Failed fetching notifications', e);
+      console.error(`[PS Toolbar] Failed fetching notifications from ${url}`, e);
       items = [];
     }
   }
 
   onMount(() => {
+    // Inject Shadow DOM styles if we have an element reference
+    if (el) {
+      const sr = el.getRootNode();
+      if (sr instanceof ShadowRoot) {
+        injectShadowCss(sr);
+      }
+    }
+
     fetchFeed();
     timer = setInterval(fetchFeed, pollInterval);
   });
@@ -38,54 +89,34 @@
   });
 </script>
 
-<nav class="toolbar" role="toolbar" aria-label="Notifications toolbar">
+<div class="toolbar" role="toolbar" aria-label="Notifications toolbar">
   {#each items as item (item.id)}
-    <a class="notif" href={item.href} title={item.title} target="_blank" rel="noopener noreferrer" aria-label={item.title}>
-      {#if item.icon}
-        <img src={item.icon} alt="" class="icon" />
-      {:else}
-        <span class="icon-placeholder" aria-hidden="true">🔔</span>
-      {/if}
-      {#if item.count > 0}
-        <span class="badge">{item.count}</span>
-      {/if}
-    </a>
+    <div class="pds-app-action">
+      <a 
+        class="button-with-badge" 
+        href={item.href} 
+        title={item.title} 
+        target="_top"
+        aria-label={item.title}
+      >
+        {#if item.icon}
+          <img src={item.icon} alt="" class="pds-icon" />
+        {:else}
+          <span class="icon-placeholder" aria-hidden="true">🔔</span>
+        {/if}
+        
+        {#if item.count > 0}
+          <span class="badge">{item.count}</span>
+        {/if}
+      </a>
+    </div>
   {/each}
-</nav>
+</div>
 
 <style>
-  .toolbar{
-    display:flex;
-    gap:0.5rem;
-    align-items:center;
-    padding:0.5rem;
-    background:#111827;
-    color:#fff;
-  }
-  .notif{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:40px;
-    height:40px;
-    border-radius:6px;
-    position:relative;
-    color:inherit;
-    text-decoration:none;
-  }
-  .icon{ width:24px; height:24px; display:block }
-  .badge{
-    position:absolute;
-    top:-6px;
-    right:-6px;
-    background:#ef4444;
-    color:#fff;
-    font-size:12px;
-    padding:2px 6px;
-    border-radius:999px;
-    min-width:18px;
-    text-align:center;
-    box-shadow:0 1px 0 rgba(0,0,0,0.2);
-  }
-  .icon-placeholder { font-size:20px }
+  /* 
+    Styles are defined in injectShadowCss.ts for Shadow DOM compatibility.
+    Svelte styles below will only work if customElement: true is NOT used,
+    or during local development/testing where Shadow DOM might be bypassed.
+  */
 </style>

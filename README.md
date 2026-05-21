@@ -3,8 +3,8 @@ PS Toolbar — Svelte 5 scaffold
 Purpose: lightweight, extensible toolbar component that reads a single JSON feed and renders notification icons with optional counters.
 
 Quick start:
-1. npm install
-2. npm run dev
+1. pnpm install
+2. pnpm run dev
 
 Notes:
 - In development the component reads /notifications.json (included under public/).
