@@ -1,0 +1,32 @@
+<!-- START commonscripts.ps-toolbar-header.content.footer.txt -->
+<script type="module">
+  // Determine portal context from URL
+  const url = window.location.pathname;
+  const portal = url.includes('/admin/') ? 'admin' : url.includes('/teachers/') ? 'teachers' : url.includes('/guardian/') ? 'guardian' : 'unknown';
+  
+  if (portal !== 'unknown') {
+    // Load the custom element registration script
+    const isDev = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    const scriptPath = isDev ? '/src/main.ts' : '/ps-toolbar/app.js?v=~(random16)';
+    
+    import(/* @vite-ignore */ scriptPath)
+      .then(() => {
+        // Prepend the custom element directly to the tools2 list using vanilla JS
+        const toolsContainer = document.querySelector("#tools2");
+        if (toolsContainer) {
+          // Wrap in a li to ensure proper layout within the ul#tools2
+          const li = document.createElement('li');
+          li.style.display = 'inline-flex';
+          li.style.verticalAlign = 'middle';
+          
+          const toolbar = document.createElement('ps-toolbar');
+          toolbar.setAttribute('portal', portal);
+          
+          li.appendChild(toolbar);
+          toolsContainer.prepend(li);
+        }
+      })
+      .catch(e => console.error('[PS Toolbar] registration failed:', e));
+  }
+</script>
+<!-- END commonscripts.ps-toolbar-header.content.footer.txt -->

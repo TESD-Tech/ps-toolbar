@@ -2,7 +2,7 @@
   {
     "id": "messages",
     "icon": "mail",
-    "href": "https://powerschool.example.com/messages",
+    "href": "/admin/messages.html",
     "title": "Messages",
     "description": "View your school messages",
     "count": 3
@@ -10,9 +10,17 @@
   {
     "id": "alerts",
     "icon": "bell",
-    "href": "https://powerschool.example.com/alerts",
+    "href": "/admin/alerts.html",
     "title": "Alerts",
-    "description": "View system notifications and alerts",
+    "description": "View system alerts",
+    "count": 7
+  },
+  {
+    "id": "approvals",
+    "icon": "star",
+    "href": "/admin/approvals.html",
+    "title": "Approvals",
+    "description": "Pending approvals",
     "count": 1
   }
 ]

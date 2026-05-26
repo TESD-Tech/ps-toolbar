@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toolbar Icon Management</title>
+  ~[wc:commonscripts]
+  ~[wc:admin_header_frame_css]
+  <style>
+    #content-area { padding: 16px; }
+  </style>
+</head>
+<body class="yui-skin-sam">
+  ~[wc:admin_navigation_frame_css]
+  
+  <h1>PS Toolbar — Icon Management</h1>
+  <p>Configure the icons that appear in the PowerSchool header toolbar. Each icon can have a target URL, hover tooltip, and a SQL query for its badge count. SQL queries are timed and logged for performance monitoring.</p>
+  
+  <div id="content-area">
+    <ps-toolbar-admin></ps-toolbar-admin>
+  </div>
+  
+  ~[wc:admin_footer_frame_css]
+  
+  <script type="module">
+    import('/ps-toolbar/admin.js');
+  </script>
+</body>
+</html>

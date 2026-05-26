@@ -1,0 +1,9 @@
+[
+  {
+    "id": "messages",
+    "icon": "mail",
+    "href": "/teachers/messages.html",
+    "title": "Messages",
+    "count": "~[tlist_sql;SELECT count(*) FROM messages WHERE status = 0 AND user_id = ~(curuserid)]~(count)[/tlist_sql]"
+  }
+]

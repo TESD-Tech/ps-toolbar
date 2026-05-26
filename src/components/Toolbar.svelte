@@ -24,13 +24,14 @@
   const resolvedFeedUrl = $derived.by(() => {
     if (feedUrl) return feedUrl;
     
-    // In PowerSchool, the feed endpoint executes count_sql and returns enriched JSON
+    // In PowerSchool, the JSON file is served through PS's template engine
+    // which evaluates ~[tlist_sql] directives for dynamic content
     if (portal !== 'unknown') {
-      return `/${portal}/ps-toolbar/feed.html`;
+      return `/${portal}/ps-toolbar/notifications.json`;
     }
-    
+
     // Fallback for local dev
-    return 'ps-toolbar/feed.html';
+    return '/notifications.json';
   });
 
   let items = $state<ToolbarItem[]>([]);

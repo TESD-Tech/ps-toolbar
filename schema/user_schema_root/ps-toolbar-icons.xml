@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<psExtension xmlns="http://www.powerschool.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.powerschool.com psextension.xsd">
+  <extensionname>U_TE_Tech_PS_Toolbar_Icon_Config</extensionname>
+  <standaloneTable dbTableName="U_TESD_PS_TOOLBAR_ICONS" comment="Toolbar notification icon configuration — icons displayed in the PowerSchool header toolbar, each with icon name, URL, SQL query for badge count, sort order, and disabled toggle.">
+    <field name="id" type="String" length="50" comment="Unique business key (e.g., 'messages', 'alerts') used by the toolbar to identify this icon"/>
+    <field name="icon" type="String" length="50" comment="PDS-style icon name matching the map in src/lib/icons.ts (e.g., 'mail', 'bell', 'star')"/>
+    <field name="href" type="String" length="255" comment="Link target URL when the icon is clicked (e.g., /admin/messages.html)"/>
+    <field name="title" type="String" length="100" comment="Display name shown in the icon fallback initial letter"/>
+    <field name="description" type="String" length="255" comment="Hover tooltip text — shown when user hovers over the icon (e.g., 'View your school messages')"/>
+    <field name="count_sql" type="String" length="4000" comment="SQL query that returns the badge count. Use ~(curuserid) for user-scoped queries. Must return a single numeric value."/>
+    <field name="sort_order" type="Integer" comment="Display order in the toolbar (lower = first)"/>
+    <field name="disabled" type="String" length="1" comment="Set to '1' to hide this icon from the toolbar"/>
+  </standaloneTable>
+</psExtension>

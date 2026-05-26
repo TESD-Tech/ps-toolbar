@@ -1,0 +1,43 @@
+{
+  "name": "eld-progress-report",
+  "version": "26.05.12",
+  "type": "module",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "package": "vite build && node node_modules/@tesd-tech/ps-package/index.js",
+    "test": "pnpm test:run && pnpm test:e2e",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:debug": "playwright test --debug --project=chromium",
+    "test:e2e:ui": "playwright test --ui",
+    "test:all": "pnpm test:run && pnpm test:e2e",
+    "redact": "node scripts/redact-names.cjs public/eld.json > public/eld-redacted.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.25.0",
+  "dependencies": {
+    "@tesd-tech/ps-package": "^25.10.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/svelte": "^5.3.1",
+    "@tsconfig/svelte": "^5.0.8",
+    "@types/node": "^25.9.0",
+    "@vitest/coverage-v8": "^4.1.6",
+    "@vitest/ui": "^4.1.6",
+    "jsdom": "^29.1.1",
+    "svelte": "^5.55.8",
+    "typescript": "~6.0.3",
+    "vite": "^8.0.13",
+    "vitest": "^4.1.6"
+  }
+}

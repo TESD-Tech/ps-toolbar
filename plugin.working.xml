@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin version="26.04.17" xmlns="http://plugin.powerschool.pearson.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd" name="TE Tech - Field Trips" description="">
+  <publisher name="Benjamin Kemp">
+    <contact email="kempb@tesd.net"/>
+  </publisher>
+  <oauth/>
+  <access_request>
+    <field table="U_TESD_Field_Trip" field="Name" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="SchoolID" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="GradeLevel" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="Team" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="PointTeacherID" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="FeeAmount" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="AccountCode" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="FeeApplicationDate" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="FormStartDate" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="FormEndDate" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="Active" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="YearID" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="Obj" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="WhenCreated" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip" field="WhenModified" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Teacher" field="FieldTripID" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Teacher" field="TeacherDCID" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Teacher" field="Obj" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Teacher" field="WhenCreated" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="FieldTripID" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="StudentDCID" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="GuardianPersonID" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="PermissionGranted" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="FeeAcknowledged" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="Notes" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="Obj" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="WhenCreated" access="FullAccess"/>
+    <field table="U_TESD_Field_Trip_Response" field="WhenModified" access="FullAccess"/>
+  </access_request>
+</plugin>
