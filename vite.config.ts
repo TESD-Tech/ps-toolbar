@@ -17,6 +17,29 @@ function noEmptyChunks() {
   }
 }
 
+// Gather all .svelte files in src/lib/components, src/lib root, and src root
+function gatherSvelteEntries() {
+  const entries = {};
+  const componentDirs = [
+    path.resolve(__dirname, 'src/lib/components'),
+    path.resolve(__dirname, 'src/lib'),
+    path.resolve(__dirname, 'src')
+  ];
+  for (const dir of componentDirs) {
+    if (!fs.existsSync(dir)) continue;
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      if (file.endsWith('.svelte')) {
+        const name = file.replace(/\.svelte$/, '').toLowerCase();
+        entries[name] = path.resolve(dir, file);
+      }
+    }
+  }
+  return entries;
+}
+
+const componentEntries = gatherSvelteEntries();
+
 export default defineConfig({
   plugins: [
     svelte({
@@ -26,7 +49,12 @@ export default defineConfig({
     mockPsApi(),
   ],
   base: `/${projectName}/`,
-  resolve: { 
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly'
+    }
+  },
+  resolve: {
     alias: { '$lib': path.resolve(__dirname, 'src/lib') },
     conditions: ['browser']
   },
@@ -37,6 +65,7 @@ export default defineConfig({
         main: path.resolve(__dirname, 'index.html'),
         app: path.resolve(__dirname, 'src/main.ts'),
         admin: path.resolve(__dirname, 'src/admin.ts'),
+        ...componentEntries
       },
       plugins: [noEmptyChunks()],
       output: {
