@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<plugin version="26.05.22" xmlns="http://plugin.powerschool.pearson.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd" name="TE Tech - PS Toolbar" description="Lightweight notification toolbar">
+<plugin version="26.05.23" xmlns="http://plugin.powerschool.pearson.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd" name="TE Tech - PS Toolbar" description="Lightweight notification toolbar">
   <publisher name="Benjamin Kemp">
     <contact email="kempb@tesd.net"/>
   </publisher>
   <oauth/>
   <access_request>
+    <table name="U_TESD_PS_TOOLBAR_ICONS" access="FullAccess"/>
     <field table="U_TESD_PS_TOOLBAR_ICONS" field="id" access="FullAccess"/>
     <field table="U_TESD_PS_TOOLBAR_ICONS" field="icon" access="FullAccess"/>
     <field table="U_TESD_PS_TOOLBAR_ICONS" field="href" access="FullAccess"/>
