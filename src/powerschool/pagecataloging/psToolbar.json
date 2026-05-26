@@ -1,0 +1,12 @@
+{
+  "pages": [
+    {
+      "htmlID": "navPsToolbarAdmin",
+      "title": "PS Toolbar Icon Management",
+      "version": "26.05.26",
+      "districtLevelContext": 0,
+      "pageURL": "/admin/ps-toolbar/admin.html",
+      "parentHTMLID": "navApplicationsSection"
+    }
+  ]
+}

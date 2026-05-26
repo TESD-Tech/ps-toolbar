@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
+
+<!-- non framed -->
+
 <head>
-  <title>Toolbar Icon Management</title>
+  <title>T/E Tech - PS Toolbar Icon Management</title>
   ~[wc:commonscripts]
-  ~[wc:admin_header_frame_css]
-  <style>
-    #content-area { padding: 16px; }
+  <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+  <link href="/images/css/print.css" rel="stylesheet" media="print">
+
+  <style type="text/css">
+    #content-area {
+      padding: 16px;
+    }
+    .box {
+      max-width: 1200px;
+    }
   </style>
 </head>
-<body class="yui-skin-sam">
-  ~[wc:admin_navigation_frame_css]
-  
+
+<body>
+  ~[wc:admin_header_css]
+  <!-- breadcrumb start -->
+  <a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/tech" target="_top">System</a> &gt; PS Toolbar Icon Management
+  <!-- breadcrumb end -->
+  ~[wc:admin_navigation_css]
+
   <h1>PS Toolbar — Icon Management</h1>
-  <p>Configure the icons that appear in the PowerSchool header toolbar. Each icon can have a target URL, hover tooltip, and a SQL query for its badge count. SQL queries are timed and logged for performance monitoring.</p>
-  
+  <p>Configure the icons that appear in the PowerSchool header toolbar. Each icon can have a target URL, hover tooltip, and a SQL query for its badge count.</p>
+
   <div id="content-area">
     <ps-toolbar-admin></ps-toolbar-admin>
   </div>
-  
-  ~[wc:admin_footer_frame_css]
-  
+
+  ~[wc:admin_footer_css]
+
   <script type="module">
-    import('/ps-toolbar/admin.js');
+    import('/ps-toolbar/admin.js?v=~(random16)');
   </script>
 </body>
+
 </html>
