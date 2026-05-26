@@ -1,16 +1,18 @@
 [
   {
     "id": "messages",
-    "icon": "/icons/message.svg",
+    "icon": "mail",
     "href": "https://powerschool.example.com/messages",
     "title": "Messages",
+    "description": "View your school messages",
     "count": 3
   },
   {
     "id": "alerts",
-    "icon": "/icons/alert.svg",
+    "icon": "bell",
     "href": "https://powerschool.example.com/alerts",
     "title": "Alerts",
+    "description": "View system notifications and alerts",
     "count": 1
   }
 ]

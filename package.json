@@ -1,6 +1,6 @@
 {
   "name": "ps-toolbar",
-  "version": "26.05.01",
+  "version": "26.05.15",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "svelte": "^5.55.8"
+    "svelte": "^5.55.9"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0",
@@ -21,11 +21,11 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/svelte": "^5.3.1",
     "@tsconfig/svelte": "^5.0.8",
-    "@types/node": "^25.9.0",
+    "@types/node": "^25.9.1",
     "jsdom": "^29.1.1",
-    "svelte-preprocess": "^6.0.3",
+    "svelte-preprocess": "^6.0.5",
     "typescript": "~6.0.3",
-    "vite": "^8.0.13",
-    "vitest": "^4.1.6"
+    "vite": "^8.0.14",
+    "vitest": "^4.1.7"
   }
 }

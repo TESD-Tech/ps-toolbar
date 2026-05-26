@@ -1,6 +1,5 @@
 <svelte:options customElement="ps-toolbar" />
 <script lang="ts">
-  import { onMount } from 'svelte';
   import Toolbar from './components/Toolbar.svelte';
   
   interface Props {
@@ -21,23 +20,17 @@
   } = $props<Props>();
 
   // Determine portal from various possible prop names
-  const resolvedPortal = $derived(() => {
+  const resolvedPortal = $derived.by(() => {
     const p = portalAttr || usertype || userType || userTypeHyphen || 'unknown';
     // Normalize 'teacher' to 'teachers' if needed
     if (p === 'teacher') return 'teachers';
     return p as 'admin' | 'teachers' | 'guardian' | 'unknown';
   });
 
-  // Reference to self for Shadow DOM access in child components
-  let el = $state<HTMLElement>();
-
-  onMount(() => {
-    // el is already bound via bind:this
-  });
 </script>
 
-<div bind:this={el} style="display: contents;">
-  <Toolbar {feedUrl} portal={resolvedPortal()} {el} />
+<div style="display: contents;">
+  <Toolbar {feedUrl} portal={resolvedPortal} />
 </div>
 
 <style>
