@@ -3,7 +3,7 @@
     {
       "htmlID": "navPsToolbarAdmin",
       "title": "PS Toolbar Icon Management",
-      "version": "26.05.21",
+      "version": "26.05.22",
       "districtLevelContext": 0,
       "pageURL": "/admin/ps-toolbar/admin.html",
       "parentHTMLID": "navApplicationsSection"
